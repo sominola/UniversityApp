@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net5.0-windows</TargetFramework>
+        <UseWPF>true</UseWPF>
+        <RootNamespace>UniversityApp</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Fonts" />
+    </ItemGroup>
+
+    <ItemGroup>
+    	<Resource Include="Fonts\Roboto-Black.ttf" />
+    	<Resource Include="Fonts\Roboto-BlackItalic.ttf" />
+    	<Resource Include="Fonts\Roboto-Bold.ttf" />
+    	<Resource Include="Fonts\Roboto-BoldItalic.ttf" />
+    	<Resource Include="Fonts\Roboto-Italic.ttf" />
+    	<Resource Include="Fonts\Roboto-Light.ttf" />
+    	<Resource Include="Fonts\Roboto-LightItalic.ttf" />
+    	<Resource Include="Fonts\Roboto-Medium.ttf" />
+    	<Resource Include="Fonts\Roboto-MediumItalic.ttf" />
+    	<Resource Include="Fonts\Roboto-Regular.ttf" />
+    	<Resource Include="Fonts\Roboto-Thin.ttf" />
+    	<Resource Include="Fonts\Roboto-ThinItalic.ttf" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Gu.Wpf.Adorners" Version="2.1.1" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="5.0.6" />
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="5.0.5.1" />
+      <PackageReference Include="PasswordBoxMVVM" Version="1.0.5" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\UniversityApp.Models\UniversityApp.Models.csproj" />
+    </ItemGroup>
+</Project>

@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApp.WPF", "UniversityApp.WPF\UniversityApp.WPF.csproj", "{3FF44C88-7D55-4383-A4D1-1B1807A463EE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UniversityApp.Models", "UniversityApp.Models\UniversityApp.Models.csproj", "{65295D3C-E6A0-4233-98B3-96F64D6895DF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3FF44C88-7D55-4383-A4D1-1B1807A463EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FF44C88-7D55-4383-A4D1-1B1807A463EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FF44C88-7D55-4383-A4D1-1B1807A463EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FF44C88-7D55-4383-A4D1-1B1807A463EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65295D3C-E6A0-4233-98B3-96F64D6895DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65295D3C-E6A0-4233-98B3-96F64D6895DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65295D3C-E6A0-4233-98B3-96F64D6895DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65295D3C-E6A0-4233-98B3-96F64D6895DF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

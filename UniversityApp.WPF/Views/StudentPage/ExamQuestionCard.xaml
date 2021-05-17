@@ -1,0 +1,70 @@
+﻿<UserControl x:Class="UniversityApp.Views.StudentPage.ExamQuestionCard"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:context="clr-namespace:UniversityApp.ViewModels.StudentPage"
+             xmlns:local="clr-namespace:UniversityApp.Views.StudentPage" Background="Transparent">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="0,0,0,15">
+            <TextBlock FontFamily="{StaticResource Roboto}"
+                       FontSize="36"
+                       TextAlignment="Center"
+                       Foreground="{StaticResource 'Font High Emphasis'}">
+                <TextBlock Text="{Binding Question}" />
+            </TextBlock>
+            <ListBox ItemsSource="{Binding Answers}"
+                     BorderThickness="0" HorizontalAlignment="Center"
+                     Background="Transparent"
+                     Width="{Binding ElementName=ListBox, Path=ActualWidth}"
+                     Height="auto"
+                     VerticalContentAlignment="Stretch"
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Hidden">
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel HorizontalAlignment="Center" />
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <RadioButton Content="{Binding Answer}"
+                                     GroupName="Question"
+                                     IsChecked="{Binding IsSelected}"
+                                     Width="800"
+                                     Height="75" Margin="5,10">
+                            <RadioButton.Template>
+                                <ControlTemplate TargetType="{x:Type RadioButton}">
+                                    <Border BorderThickness="2" x:Name="Border" CornerRadius="5"
+                                            BorderBrush="#7A7A7A">
+                                        <BulletDecorator x:Name="bulletDecorator"
+                                                         SnapsToDevicePixels="True"
+                                                         VerticalAlignment="Center">
+                                            <BulletDecorator.Bullet>
+                                                <ContentPresenter Margin="4,0,0,0"
+                                                                  VerticalAlignment="Center"
+                                                                  HorizontalAlignment="Center"
+                                                                  RecognizesAccessKey="True"
+                                                                  TextBlock.FontFamily="{StaticResource Roboto}"
+                                                                  TextBlock.FontSize="36"
+                                                                  TextBlock.TextAlignment="Center"
+                                                                  Width="{Binding ElementName=Border, Path=ActualWidth}"
+                                                                  TextBlock.Foreground="{StaticResource 'Font High Emphasis'}" />
+                                            </BulletDecorator.Bullet>
+                                        </BulletDecorator>
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsChecked" Value="True">
+                                            <Setter Property="BorderBrush" TargetName="Border"
+                                                    Value="{StaticResource 'Primary 200'}" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </RadioButton.Template>
+                        </RadioButton>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+    </Grid>
+</UserControl>

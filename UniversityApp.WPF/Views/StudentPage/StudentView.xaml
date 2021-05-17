@@ -1,0 +1,84 @@
+﻿<UserControl x:Class="UniversityApp.Views.StudentPage.StudentView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             mc:Ignorable="d">
+    <Grid Background="{StaticResource Background}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Border Padding="70,0,70,0">
+            <Border.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Foreground" Value="{StaticResource 'Font High Emphasis'}" />
+                    <Setter Property="FontSize" Value="48" />
+                    <Setter Property="FontWeight" Value="Regular" />
+                    <Setter Property="Cursor" Value="Hand" />
+                    <Setter Property="FontFamily" Value="{StaticResource Roboto}" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="border" BorderBrush="Transparent"
+                                        BorderThickness="0" CornerRadius="0"
+                                        Background="Transparent" SnapsToDevicePixels="True">
+                                    <ContentPresenter x:Name="contentPresenter"
+                                                      ContentTemplate="{TemplateBinding ContentTemplate}"
+                                                      Content="{TemplateBinding Content}"
+                                                      ContentStringFormat="{TemplateBinding ContentStringFormat}"
+                                                      Focusable="False"
+                                                      HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                      Margin="{TemplateBinding Padding}" RecognizesAccessKey="True"
+                                                      SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                      VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <Trigger Property="IsMouseOver" Value="True">
+                                        <Setter Property="Background" TargetName="border" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="{StaticResource 'Primary 200'}" />
+                                        <Setter Property="BorderThickness" TargetName="border" Value="0" />
+                                    </Trigger>
+                                    <Trigger Property="IsEnabled" Value="False">
+                                        <Setter Property="Background" TargetName="border" Value="Transparent" />
+                                        <Setter Property="Foreground" Value="{StaticResource 'Primary 200'}" />
+                                        <Setter Property="BorderThickness" TargetName="border" Value="0" />
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Border.Resources>
+            <DockPanel>
+                <DockPanel.Resources>
+                    <Style TargetType="TextBlock" BasedOn="{StaticResource 'Headline 3'}" />
+                </DockPanel.Resources>
+                <Viewbox Width="80" Height="80">
+                    <Canvas Width="24" Height="24">
+                        <Path Fill="{StaticResource 'Font High Emphasis'}" Style="{StaticResource IconPerson}" />
+                    </Canvas>
+                </Viewbox>
+                <TextBlock Margin="15,0,0,0" HorizontalAlignment="Left" Style="{StaticResource 'Headline 2'}">
+                    <TextBlock.Text>
+                        <MultiBinding StringFormat="{}{0} {1}">
+                            <Binding Path="Account.Human.Name" />
+                            <Binding Path="Account.Human.LastName" />
+                        </MultiBinding>
+                    </TextBlock.Text>
+                </TextBlock>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Center">
+                    <Button Content="List Faculties" Command="{Binding ListFaculties}"
+                            Visibility="{Binding VisibilityFacultyList}" />
+                    <Button Content="Exam" Command="{Binding SignUp}" Margin="56,0,0,0"
+                            Visibility="{Binding VisibilityExam}" />
+                </StackPanel>
+            </DockPanel>
+        </Border>
+        <Border Grid.Row="1" CornerRadius="20"
+                Background="{StaticResource 'Background Secondary'}"
+                Padding="0,30,0,15" Margin="35">
+            <UserControl Content="{Binding CurrentControl}" />
+        </Border>
+    </Grid>
+</UserControl>
