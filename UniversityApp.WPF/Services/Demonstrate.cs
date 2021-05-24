@@ -37,6 +37,17 @@ namespace UniversityApp.Services
             var result = from student in db.Students
                 join faculty in db.Faculties on student.FacultyId equals faculty.FacultyId
                 select new {Name = student.Name, Faculty = student.Faculty.NameFaculty, Exams = faculty.Exams};
+
+            var expansionMethod = db.Students.Join(db.Faculties,
+                student => student.FacultyId,
+                faculty => faculty.FacultyId,
+                (student, faculty) => new
+                {
+                    Name = student.Name,
+                    Faculty = faculty.NameFaculty,
+                    Exams = faculty.Exams
+                }
+            );
             foreach (var t in result)
             {
                 Console.WriteLine($"{t.Name} {t.Faculty}");
@@ -52,6 +63,23 @@ namespace UniversityApp.Services
             }
 
 
+            var union = db.Students.Where(s => s.LastName.Contains("a"))
+                .Union(db.Students.Where(s=>s.FacultyId == 1));
+            
+            var intersect = db.Students.Where(s => s.LastName.Contains("a"))
+                .Intersect(db.Students.Where(s=>s.FacultyId == 1));
+
+            var selectFirst = db.Students.Where(s => s.FacultyId == 1);
+            var selectSecond = db.Students.Where(s => s.LastName.Contains("a"));
+            var except = selectFirst.Except(selectSecond);
+
+            int? count = db.Students.Count(s => s.Age == 19);
+            
+            int? min = db.Students.Min(s => s.Age);
+            double? avg = db.Students.Average(s => s.Age);
+            int? max = db.Students.Min(s => s.Age);
+
+            int? sum = db.Students.Sum(s => s.Age);
         }
     }
 }
